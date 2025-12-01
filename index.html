@@ -1,56 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Search APP</title>
-   <link rel="stylesheet" href="style.css">
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
+    <title>Recipe Search App</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
         <h1>Recipe Search Application</h1>
         <p>Find delicious recipes by ingredient</p>
-
-
     </header>
-    <section class="Search-Recipes">
-        <h2 class="search-recipes-header"> Search Recipes</h2>
-        <form>
-            <input type="text" placeholder="Enter ingredients">
-            <button type="submit" class="button"
->Search
 
-            </button>
+    <section class="search-recipes">
+        <h2 class="section-title">Search Recipes</h2>
+        <form id="search-form">
+            <input type="text" placeholder="Enter ingredients" id="ingredient-input">
+            <button type="submit" class="button">Search</button>
         </form>
     </section>
 
-    <section class="Search-result">
-        <h2>Search Result-1</h2>
-        <div>
-            <p>Search for ingredients to see recipes</p>
-        </div>
-        <h2>Search Result-2</h2>
-        <div>
+    <section class="search-results">
+        <h2 class="section-title">Search Results</h2>
+        <div class="results-container">
             <p>Search for ingredients to see recipes</p>
         </div>
     </section>
 
-    <section>
-        <h2>Favorite Recipes</h2>
-        <div>
-            <p>No favorite yet. Add some recipes!</p>
+    <section class="favorites">
+        <h2 class="section-title">Favorite Recipes</h2>
+        <div class="favorites-container">
+            <p>No favorites yet. Add some recipes!</p>
         </div>
     </section>
-    
+
     <footer>
-        <p>Created by Fridge_Finders!!
+        <p>Created by Fridge_Finders!</p>
     </footer>
 </body>
-
 </html>
+
