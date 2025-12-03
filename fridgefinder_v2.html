@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FridgeFinder Recipes</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="logo.png" alt="FridgeFinder logo">
+        <div>
+            <h1>FridgeFinder</h1>
+            <p>Search for recipes according to your ingredients and time!</p>
+        </div>
+        <button type="button" class="goal">Our goal</button>
+    </header>
+
+    <!-- Grid -->
+    <main class="grid">
+        <!-- Serach input -->
+        <section class="search-recipes">
+            <h2 class="section-title">Search Recipes</h2>
+            <form id="search-form">
+                <input type="text" placeholder="Enter ingredients (e.g., chicken)!" id="search-input">
+                <input type="number" placeholder="Enter food chategory!" id="time-unput">
+                <button type="submit" class="search-button" id="search-button">Search</button>
+                <p>How it works: write in any ingredient (e.g. Egg) and any food chategory (e.g. Seafood), and press the Search button to get 5 inredible recipes, then all you have to do is prepare the dishes!</p>
+            </form>
+        </section>
+
+        <!-- Search result and favourites -->
+        <section class="results">
+            <main class="grid-results">    
+                <section class="result-text-container">
+                    <h2 class="section-title">Search Results</h2>
+                    <div id="results"></div>
+                </section>
+                
+                <section class="result-image">
+                    <div class="result-image-container" id="resultimg">
+                        <p>Search for ingredients to see recipes</p>
+                    </div>
+                </section>
+                
+        </section>
+        </main>
+    </main>
+
+
+    <footer>
+        <p>Created by FridgeFinders</p>
+    </footer>
+
+    <script>
+        let searchButton = document.getElementById("search-button");
+        let searchInput = document.getElementById("search-input");
+        let resultsDiv = document.getElementById("results");
+        let resultImageDiv = document.getElementById("resultimg");
+
+        // WHEN BUTTON CLICKED
+        searchButton.addEventListener("click", function(event) {
+            event.preventDefault(); //stop page reload
+
+            let ingredient = searchInput.value.trim();
+            if (!ingredient) {
+                resultsDiv.innerHTML = "<p>Please enter an ingredient!</p>";
+                resultImageDiv.innerHTML = "";
+                return;
+            }
+
+            resultsDiv.innerHTML = "<p>Loading recipes...</p>";
+            resultImageDiv.innerHTML = "";
+
+            let apiUrl = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + ingredient;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+
+                    resultsDiv.innerHTML = "";
+                    resultImageDiv.innerHTML = "";
+
+                    if (!data.meals) {
+                        resultsDiv.innerHTML = "<p>No recipes found.</p>";
+                        return;
+                    }
+
+                    let recipes = data.meals;
+
+                    for (let i = 0; i < 5 && i < recipes.length; i++) {
+                        let recipe = recipes[i];
+
+                        // TEXT SECTION
+                        resultsDiv.innerHTML += `
+                            <div class="recipe-text">
+                                <h3>${recipe.strMeal}</h3>
+                                <p><strong>Category:</strong> ${recipe.strCategory}</p>
+                                <p><strong>Origin:</strong> ${recipe.strArea}</p>
+                            </div>
+                            <hr>
+                        `;
+
+                        // IMAGE SECTION
+                        resultImageDiv.innerHTML += `
+                            <div class="recipe-image">
+                                <img src="${recipe.strMealThumb}" 
+                                    alt="${recipe.strMeal}" 
+                                    style="width:150px; border-radius:10px;">
+                            </div>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.log("Error:", error);
+                    resultsDiv.innerHTML = "<p>Something went wrong.</p>";
+                    resultImageDiv.innerHTML = "";
+                });
+        });
+    </script>
+
+
+    </body>
+</html>
+

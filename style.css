@@ -72,9 +72,20 @@ column-gap: 5px;
 padding: 20px
 }
 
+.grid-results{
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: auto auto;
+}
+
+.asdasdasd {
+grid-column: 1;
+grid-row: 1 / 2
+}
+
 .search-recipes {
 grid-column: 1;
-grid-row: 1 / 3
+grid-row: 1 / 2
 }
 
 .search-results {
@@ -82,10 +93,6 @@ grid-column: 2;
 grid-row: 1
 }
 
-.favorites {
-grid-column: 2;
-grid-row: 2
-}
 
 .section-title {
 text-align: center;
