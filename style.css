@@ -1,19 +1,25 @@
 body {
 margin: 0;
 font-family: 'Roboto', sans-serif;
-background-color: #fafafa;
+background-color: #FBF8F1;
 color: #333;
 }
 
-
 header {
-text-align: center;
-padding: 40px 20px;
-background-color: #ff914d;
-color: white;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+display: flex;
+align-items: center;
+height: 100%;
+width: auto;
+gap: 20px;
+background-color: #4db8ff;
+color: #FBF8F1;
 }
 
+header img{
+    height: 150px;
+    border: 6px solid #4db8ff;
+    border-radius: 20px
+}
 
 header h1 {
 margin: 0;
@@ -26,59 +32,95 @@ header p {
 margin: 10px 0 0;
 font-size: 1.1rem;
 font-weight: 300;
+color: #17364b
 }
 
-
-.section-title {
+.goal {
+display: flex;
+align-items: center;
+padding: 10px 20px;
 text-align: center;
-font-size: 1.8rem;
-margin-bottom: 20px;
-font-weight: 600;
-color: #444;
+height: 30px;
+background-color: #FBF8F1;
+color: #17364b;
+border-radius: 8px;
+cursor: pointer;
+transition: 0.2s ease;
 }
 
+.goal:hover{
+    background-color: #17364b;
+    color:#FBF8F1;
+}
 
 section {
 width: 90%;
 max-width: 800px;
-margin: 40px auto;
+margin: 5px auto;
 padding: 20px;
 background: white;
 border-radius: 12px;
 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
+.grid{
+display: grid;
+grid-template-columns: 1fr 1fr;
+grid-template-rows: auto auto;
+row-gap: 5px;
+column-gap: 5px;
+padding: 20px
+}
+
+.search-recipes {
+grid-column: 1;
+grid-row: 1 / 3
+}
+
+.search-results {
+grid-column: 2;
+grid-row: 1
+}
+
+.favorites {
+grid-column: 2;
+grid-row: 2
+}
+
+.section-title {
+text-align: center;
+font-size: 1.8rem;
+margin-bottom: 20px;
+font-weight: 600;
+color: #17364b;
+}
+
 
 #search-form {
 display: flex;
+flex-direction: column;
 justify-content: center;
-gap: 10px;
+gap: 10px
 }
 
 
 #search-form input {
 padding: 10px 14px;
-width: 60%;
 border-radius: 8px;
 border: 1px solid #ccc;
 font-size: 1rem;
 }
 
 
-.button {
+.search-button {
 padding: 10px 20px;
-background-color: #ff914d;
+height: 100px;
+background-color: #4db8ff;
 color: white;
-border: none;
+font-size: 25px;
 border-radius: 8px;
 cursor: pointer;
-font-size: 1rem;
 transition: 0.2s ease;
-}
-
-
-.button:hover {
-background-color: #e67e32;
 }
 
 
@@ -98,6 +140,8 @@ background-color: #333;
 color: white;
 font-size: 0.9rem;
 }
-.button:hover{
-    color:red;
+
+.search-button:hover{
+    background-color: #FBF8F1;
+    color:#17364b;
 }
